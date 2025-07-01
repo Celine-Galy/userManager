@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once __DIR__ .'../../database.php';
 require_once 'Session.php';
 require_once 'User.php';
 

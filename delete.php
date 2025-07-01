@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/UserManager.php';
 require_once 'includes/Session.php';
-Session::redirectIfNotLoggedIn();
+//Session::redirectIfNotLoggedIn();
 
 if (isset($_GET['id'])) {
     $userManager = new UserManager();

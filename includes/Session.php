@@ -1,7 +1,7 @@
 <?php
 class Session {
     public static function start() {
-        if (session_status() == PHP_SESSION_NONE) {
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
@@ -14,6 +14,17 @@ class Session {
     public static function get($key, $default = null) {
         self::start();
         return $_SESSION[$key] ?? $default;
+    }
+
+    public static function delete($key) {
+        self::start();
+        unset($_SESSION[$key]);
+    }
+
+    public static function destroy() {
+        self::start();
+        session_unset();
+        session_destroy();
     }
 
     public static function isLoggedIn() {

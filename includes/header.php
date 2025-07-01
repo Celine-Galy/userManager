@@ -27,7 +27,11 @@ function getSessionSafe($key, $default = '') {
             <?php if (isset($_SESSION['user_id'])): ?>
                 <div class="user-section">
                     <span>Connecté en tant que : <?= getSessionSafe('user_username') ?></span>
-                    <a href="auth/logout.php" class="logout-btn">Déconnexion</a>
+                   <a href="auth/logout.php" 
+   class="logout-btn"
+   onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?')">
+   Déconnexion
+</a>
                 </div>
             <?php else: ?>
                 <a href="auth/login.php" class="login-btn">Connexion</a>
