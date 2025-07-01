@@ -68,12 +68,16 @@ class UserManager {
     public function update(User $user) {
         $stmt = $this->db->prepare(
             "UPDATE users SET 
-            username = :username, 
+            name = :name, 
+            firstname = :firstname,
+            username = :username,
             email = :email 
             WHERE id = :id"
             );
         
-        $stmt->bindValue(':name', $user->getUsername());
+        $stmt->bindValue(':name', $user->getName());
+        $stmt->bindValue(':firstname', $user->getFirstname());
+        $stmt->bindValue(':username', $user->getUsername());
         $stmt->bindValue(':email', $user->getEmail());
         $stmt->bindValue(':id', $user->getId());
         

@@ -20,15 +20,21 @@ if (!$user) {
 
 $message = '';
 $name = $user->getName();
+$firstname = $user->getFirstname();
+$username = $user->getUsername();
 $email = $user->getEmail();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name']);
+    $firstname = trim($_POST['firstname']);
+    $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     
     if (!empty($name) && !empty($email)) {
         try {
             $user->setName($name);
+            $user->setFirstname($firstname);
+            $user->setUsername($username);
             $user->setEmail($email);
             $userManager->update($user);
             
@@ -50,11 +56,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php endif; ?>
 
 <form method="POST">
-    <input name="id" value="<?= $user->getId() ?>">
+    <input name="id" type="hidden" value="<?= $user->getId() ?>">
     
     <div class="form-group">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="name" value="<?= htmlspecialchars($name) ?>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="firstname">Prénom :</label>
+        <input type="text" id="firstname" name="firstname" value="<?= htmlspecialchars($firstname) ?>" required>
+    </div>
+
+    <div class="form-group">
+        <label for="username">Pseudo :</label>
+        <input type="text" id="username" name="username" value="<?= htmlspecialchars($username) ?>" required>
     </div>
     
     <div class="form-group">
